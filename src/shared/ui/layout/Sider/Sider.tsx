@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { useWindowInnerWidth } from '~shared/ui/utils';
-import { Logo } from '~shared/ui/logo';
 
 import styles from './sider.module.scss';
 

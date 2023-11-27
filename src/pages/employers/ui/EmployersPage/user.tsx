@@ -17,17 +17,17 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       key:"id"
     },
     {
+      title:'Сотрудник',
+      dataIndex: 'name',
+      key: 'name'
+    },
+    {
         title:'Структура',
         key: 'structure'
     },
     {
         title: 'Должность',
         key:'job'
-    },
-    {
-        title:'Сотрудник',
-        dataIndex: 'name',
-        key: 'name'
     },
     {
       title: 'Action',

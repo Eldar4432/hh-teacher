@@ -17,6 +17,11 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       key:"id"
     },
     {
+      title: 'ФИО сотрудника',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
       title: 'Название командировки',
       key:'Название командировки'
     },
@@ -35,11 +40,6 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     {
       title: 'Тип командировки',
       key:'Тип командировки'
-    },
-    {
-      title: 'ФИО сотрудника',
-      dataIndex: 'name',
-      key: 'name',
     },
     {
       title: 'Action',
