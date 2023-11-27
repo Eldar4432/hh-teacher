@@ -68,9 +68,6 @@ export const SignInForm: React.FC<SignInFormProps> = ({
     <div className={styles.bg}>
       <div className={styles.wrapper}>
         <form id={formId} onSubmit={handleSubmit} noValidate className={styles.form}>
-          <h2 className={styles.welcome}>{t('auth:welcome')}</h2>
-          <Logo type="primary" lang={i18n.language} />
-          <h2 className={styles.vuzname}>{t('auth:university')}</h2>
           <div className={styles.inputsWrapper}>
             <Input
               value={login}

@@ -26,12 +26,6 @@ export const Sider: React.FC<SiderProps> = ({ user, routes, links, settings, col
       className={siderClass}
       style={{ maxHeight: windowWidth <= 768 ? innerHigth - 64 : 'unset' }}
     >
-      <div className={styles.logo_user}>
-        <div className={logoClass}>
-          <Logo type="secondary" />
-        </div>
-        {user}
-      </div>
       <div className={styles.line} />
       <div className={styles.routes}>{routes}</div>
       <div className={styles.line} />

@@ -32,6 +32,7 @@
   },
   "routes": {
     "home": "Home",
+    "businessTrips": "Business Trips",
     "news": "News",
     "score": "Score",
     "order": "Order",

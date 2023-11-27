@@ -58,6 +58,8 @@
     "discipline": "Дисциплины",
     "qr": "QR шифр",
     "login": "Вход",
+    "employees": "Сотрудники",
+    "businessTrips": "Командировки",
     "logout": "Выход",
     "settings": "Настройки"
   },

@@ -1,4 +1,4 @@
-import { lazy, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 // import { Route, Routes, useLocation } from 'react-router-dom';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ import { NotFoundPage } from '~pages/not-found';
 import { LogoutPage } from '~pages/logout';
 import { HomePage } from '~pages/home';
 import { SettingsPage } from '~pages/settings';
+import { TablePage } from '~pages/businessTrips';
+import EmployersPage from '~pages/employers/ui/EmployersPage/EmployersPage';
 
 export const redirectUrl = RoutesUrls.login;
 
@@ -48,6 +50,8 @@ export const Router = () => {
         <Route path={RoutesUrls.settings} element={<SettingsPage />} />
         <Route path={RoutesUrls.logout} element={<LogoutPage />} />
         <Route path={RoutesUrls.notFound} element={<NotFoundPage />} />
+        <Route path={RoutesUrls.businessTrips} element={<TablePage />} />
+        <Route path={RoutesUrls.employees} element={<EmployersPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

@@ -24,6 +24,7 @@
     "src"
   ],
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@ant-design/plots": "^1.2.5",
     "@emotion/cache": "^11.10.1",
     "@emotion/css": "^11.10.0",

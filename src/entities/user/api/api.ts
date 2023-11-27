@@ -1,7 +1,7 @@
 import { ApiResponseData, api } from '~shared/api';
 import { setAsyncTimeout } from '~shared/lib/utils';
 
-import { routes } from './routes';
+// import { routes } from './routes';
 import { ApiUserData } from './types';
 
 export const getUser = async () => {
