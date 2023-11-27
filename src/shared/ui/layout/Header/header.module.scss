@@ -1,0 +1,51 @@
+.Header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+  margin-top: -24px;
+  background: var(--bg) !important;
+  border-bottom: 2px solid rgba(33, 36, 41, 0.04);
+  width: 100%;
+
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.burger {
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 1024px) {
+  .Header {
+    padding: 20px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Header {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    gap: 20px;
+    padding: 16px 0;
+    margin-top: -16px;
+    border-top: unset;
+
+    visibility: visible;
+    transition: all 250ms linear;
+  }
+
+  .hidden {
+    visibility: hidden;
+    transition: all 250ms linear;
+    transform: translateY(-200%);
+  }
+}

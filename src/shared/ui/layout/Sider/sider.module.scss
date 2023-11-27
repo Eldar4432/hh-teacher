@@ -1,0 +1,95 @@
+.SiderWrapper {
+  background: var(--gr);
+  padding: 30px 24px;
+  border-radius: 16px;
+  height: calc(100vh - 32px);
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  transition: width 0.3s ease-in;
+  position: sticky;
+  top: 16px;
+  bottom: 16px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.collapsed {
+  width: 72px;
+  transition: width 0.3s ease-in;
+}
+
+.line {
+  background: var(--white);
+  opacity: 0.3;
+  height: 1px;
+  border-radius: 100%;
+  width: 100%;
+}
+
+.logo_user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 24px;
+  min-height: 162px;
+}
+
+.logo {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  transition: all 0.3s linear;
+}
+
+.rotatedLogo {
+  transform: rotate(-90deg);
+  height: 108px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .SiderWrapper {
+    position: fixed;
+    z-index: 9;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--gr);
+    padding: 24px 16px;
+    border-radius: 0;
+    height: calc(100vh - 64px);
+    width: 100%;
+    overflow-y: auto;
+
+    transition: all 0.25s ease-in;
+  }
+
+  .logo_user {
+    gap: 20px;
+    min-height: unset;
+  }
+
+  .collapsed {
+    position: fixed;
+    left: -100%;
+    top: 64px;
+    bottom: 0;
+    width: 100%;
+    transition: all 0.25s ease-in;
+  }
+
+  .rotatedLogo {
+    transform: rotate(0);
+    height: auto;
+  }
+}

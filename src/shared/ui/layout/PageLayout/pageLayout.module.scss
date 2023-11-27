@@ -1,0 +1,43 @@
+.PageLayout {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 24px;
+  height: 100%;
+}
+
+.pageChildren {
+  padding: 24px 0;
+  box-sizing: border-box;
+  // overflow-x: auto;
+  max-width: calc(100vw - 48px);
+
+  display: grid;
+  gap: 24px;
+}
+
+@media screen and (max-width: 1024px) {
+  .PageLayout {
+    padding: 16px 20px;
+  }
+
+  .pageChildren {
+    max-width: calc(100vw - 40px);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .PageLayout {
+    padding: 16px 16px;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+    height: 100vh;
+  }
+
+  .pageChildren {
+    max-width: calc(100vw - 32px);
+    gap: 16px;
+    margin-bottom: calc(72px + 16px + 16px);
+  }
+}
