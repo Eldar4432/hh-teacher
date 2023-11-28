@@ -28,7 +28,6 @@ export const Navigation: FC<NavigationProps> = () => {
         document.body.style.overflow = 'hidden';
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collapsedAtom]);
 
   const routes = [
