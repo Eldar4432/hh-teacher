@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const locAtom = atom(null)
+export const locAtom = atom('in')
