@@ -9,10 +9,6 @@ export const AddModalBusinessTrip:FC<{set:()=>void}> = ( {set} ) => {
     const handleLoc = (e:any) =>{
         setLoc(e.target.value)  
     }
-
-    const cancelHandle = () =>{
-        set()
-    }
     
     const handleHandle = (event:any) =>{
         event.preventDefault()
@@ -29,6 +25,7 @@ export const AddModalBusinessTrip:FC<{set:()=>void}> = ( {set} ) => {
         console.log('data => ', data);
         console.log('values => ', values);
         
+        event.currentTarget.reset()
         return 
     }
     
@@ -85,8 +82,8 @@ export const AddModalBusinessTrip:FC<{set:()=>void}> = ( {set} ) => {
             <input type="text" placeholder="ФИО сотрудника" name='name' className="p-[5px] my-[24px] border-solid" />
             <input type="text" placeholder="№ и дата приказа" name='order' className="p-[5px] border-solid"/>
             <div className="flex justify-around my-[24px]">
-                <button className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]" onClick={cancelHandle}>Отменить</button>
-                <button className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]">Добавить</button>
+                <button type="reset" className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]" onClick={()=>set()}>Отменить</button>
+                <button type="submit" className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]">Добавить</button>
             </div>
         </form>
     </div>
