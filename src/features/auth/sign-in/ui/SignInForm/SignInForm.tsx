@@ -1,8 +1,7 @@
 import { ReactNode, useState } from 'react';
 
 import { useSignIn } from '~shared/lib/auth';
-import { Button, Input, Logo } from '~shared/ui';
-import { UserIcon } from '~shared/ui/Icons/icons';
+import { Button, Input } from '~shared/ui';
 import { useTranslation } from '~shared/lib/i18n';
 
 import { signIn } from '../../api';
@@ -74,7 +73,6 @@ export const SignInForm: React.FC<SignInFormProps> = ({
               onChange={(e) => setLogin(e.target.value)}
               name="login"
               className="lmsInputSignIn"
-              suffix={<UserIcon />}
               placeholder={t('auth:loginPlaceholder') || 'Логин'}
             />
 
