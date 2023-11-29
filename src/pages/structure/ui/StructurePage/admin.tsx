@@ -18,17 +18,12 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       key:"id"
     },
     {
-        title:'Структура',
-        key: 'structure'
+      title: "Аталышы",
+      key:"atalysh"
     },
     {
-      title:'Ф.И.О.',
-      dataIndex: 'name',
-      key: 'name'
-    },
-    {
-        title: 'Должность',
-        key:'job'
+      title:'Название',
+      key: 'title'
     },
     {
       title: 'Action',
@@ -55,7 +50,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? 'absolute z-50': 'hidden'}>
         <AddModalWorker set={handleVis}/>
       </div>
-      <Table columns={columns} dataSource={data} bordered/>
+      <Table columns={columns} dataSource={data} bordered />
     </>
   );
 };

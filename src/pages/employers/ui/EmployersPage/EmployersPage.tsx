@@ -23,8 +23,8 @@ const UserTablePage = lazy(() =>
   import('./user').then((module) => ({ default: module.UserTablePage }))
 );
 
-const EmployersPage: FC<EmployersPageProps> = () => {
-    const user =useUser()
+export const EmployersPage: FC<EmployersPageProps> = () => {
+    const user = useUser()
     const { t } = i18n;
 
   return (
@@ -36,5 +36,3 @@ const EmployersPage: FC<EmployersPageProps> = () => {
     </>
   )
 }
-
-export default EmployersPage

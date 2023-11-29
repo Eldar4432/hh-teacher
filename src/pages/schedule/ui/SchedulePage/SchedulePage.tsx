@@ -29,7 +29,7 @@ export const SchedulePage: FC<SchedulePageProps> = () => {
   return (
     <>
         <Helmet>
-            <title>{t('cm:pages.employers')}</title>
+            <title>{t('cm:pages.schedule')}</title>
         </Helmet>
         {user?.type === 1 ? <AdminTablePage data={data}/> : <UserTablePage data={data} /> }
     </>
