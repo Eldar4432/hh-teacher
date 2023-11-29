@@ -95,6 +95,7 @@ export default ({ mode }: { mode: string }) => {
     },
     server: {
       port: 3000,
+      open: true
     },
     test: {
       globals: true,

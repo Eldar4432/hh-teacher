@@ -5,13 +5,12 @@ import { i18n } from '~shared/lib/i18n';
 
 
 
-export interface EmployersPageProps {}
+export interface SchedulePageProps {}
 
 const data =[
     {
         id:1,
-        name: "Tamara",
-        birthDate: '22.02.2002'
+        name: "Tamara"
     }
 ]
 
@@ -23,7 +22,7 @@ const UserTablePage = lazy(() =>
   import('./user').then((module) => ({ default: module.UserTablePage }))
 );
 
-const EmployersPage: FC<EmployersPageProps> = () => {
+export const SchedulePage: FC<SchedulePageProps> = () => {
     const user =useUser()
     const { t } = i18n;
 
@@ -36,5 +35,3 @@ const EmployersPage: FC<EmployersPageProps> = () => {
     </>
   )
 }
-
-export default EmployersPage

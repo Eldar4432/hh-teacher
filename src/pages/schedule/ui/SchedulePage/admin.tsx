@@ -18,27 +18,17 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       key:"id"
     },
     {
+        title:'Структура',
+        key: 'structure'
+    },
+    {
       title:'Ф.И.О.',
       dataIndex: 'name',
       key: 'name'
     },
     {
-      title: 'ПИН', 
-      key:'pin'
-    },
-    {
-      title: 'Дата рождения',
-      key: 'birthDate',
-      dataIndex: 'birthDate'
-    },
-    {
-      title: 'Активен',
-      key:'active',
-      render:()=>(
-        <Space size={'middle'}>
-          <input type="checkbox" name="active" id="active" />
-        </Space>
-      )
+        title: 'Должность',
+        key:'job'
     },
     {
       title: 'Action',
