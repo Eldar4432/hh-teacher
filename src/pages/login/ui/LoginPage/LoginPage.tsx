@@ -25,14 +25,14 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
       LocalStorageCache.flush();
 
       setUser({ authState }).then(() => {
-        navigate(RoutesUrls.employees, { replace: true });
+        navigate(RoutesUrls.employers, { replace: true });
       });
     },
     [navigate, setUser]
   );
 
   if (isAuth()) {
-    return <Navigate to={RoutesUrls.employees} replace />;
+    return <Navigate to={RoutesUrls.employers} replace />;
   }
 
   return (

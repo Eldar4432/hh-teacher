@@ -1,7 +1,7 @@
 export enum RoutesUrls {
   root = '/',
   home = '/home',
-  employees = '/employees',
+  employers = '/employers',
   businessTrips = '/businessTrips',
   reports = '/reports',
   login = '/login',

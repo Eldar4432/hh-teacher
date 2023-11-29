@@ -29,7 +29,7 @@ const EmployersPage: FC<EmployersPageProps> = () => {
   return (
     <>
         <Helmet>
-            <title>{t('cm:pages.employees')}</title>
+            <title>{t('cm:pages.employers')}</title>
         </Helmet>
         {user?.type === 1 ? <AdminTablePage data={data}/> : <UserTablePage data={data} /> }
     </>

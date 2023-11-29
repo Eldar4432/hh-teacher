@@ -33,7 +33,7 @@
   "routes": {
     "home": "Главная",
     "studentBase" : "База студентов",
-    "employees": "Сотрудники",
+    "employers": "Сотрудники",
     "businessTrips": "Командировки",
     "reports": "Отчеты",
     "items": "Предметы",
@@ -58,7 +58,7 @@
     "discipline": "Дисциплины",
     "qr": "QR шифр",
     "login": "Вход",
-    "employees": "Сотрудники",
+    "employers": "Сотрудники",
     "businessTrips": "Командировки",
     "logout": "Выход",
     "settings": "Настройки"

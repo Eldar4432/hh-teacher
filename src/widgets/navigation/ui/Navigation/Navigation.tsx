@@ -44,8 +44,8 @@ export const Navigation: FC<NavigationProps> = () => {
 
   const routes = [
     {
-      title: t('cm:routes.employees'),
-      path: RoutesUrls.employees,
+      title: t('cm:routes.employers'),
+      path: RoutesUrls.employers,
       icon: <UsersIcon />,
       isAdmin: true,
       isUser: true,
