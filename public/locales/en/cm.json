@@ -75,12 +75,14 @@
   },
   "modal":{
     "add":"Add",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "jobTitle":"Job Title",
+    "structure":"Structure"
   },
   "jobs":{
     "front": "Frontend",
-    "back":"Backend",
-    "design":"Designer",
-    "engeneer":"Software Engeneer"
+    "back": "Backend",
+    "design": "Designer",
+    "engeneer": "Software Engeneer"
   }
 }

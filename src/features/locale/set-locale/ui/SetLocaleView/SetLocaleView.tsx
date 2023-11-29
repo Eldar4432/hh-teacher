@@ -14,7 +14,7 @@ export const SetLocaleView: React.FC<SetLocaleViewProps> = () => {
 
   return (
     <Box title={t('locale.language')}>
-      <div className="flex">
+      <div className="flex col">
         <Segmented
           onChange={handleLocaleChange}
           size="large"

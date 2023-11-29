@@ -8,8 +8,20 @@ import { useTranslation } from '~shared/lib/i18n';
 
 import { RoutesUrls } from '~shared/lib/router';
 
-import { Sider, SiderButton, TabBar, TabbarButton, useWindowInnerWidth } from '~shared/ui';
-import { BtTableIcon, HomeIcon, LogoutIcon, ReportsIcon, SettingsIcon, UsersIcon } from '~shared/ui/Icons/icons';
+import { Sider, 
+        SiderButton, 
+        TabBar, 
+        TabbarButton, 
+        useWindowInnerWidth } from '~shared/ui';
+        
+import { BtTableIcon, 
+        HomeIcon, 
+        LogoutIcon, 
+        ReportsIcon, 
+        ScheduleIcon, 
+        SettingsIcon, 
+        StructureIcon, 
+        UsersIcon } from '~shared/ui/Icons/icons';
 
 export interface NavigationProps {}
 
@@ -32,39 +44,46 @@ export const Navigation: FC<NavigationProps> = () => {
 
   const routes = [
     {
-      title: t('cm:routes.home'),
-      path: RoutesUrls.home,
-      icon: <HomeIcon />,
-      isTeacher: true,
-      isStudent: true,
-    },
-    {
       title: t('cm:routes.employees'),
       path: RoutesUrls.employees,
       icon: <UsersIcon />,
-      isTeacher: true,
-      isStudent: true,
+      isAdmin: true,
+      isUser: true,
+    },
+    {
+      title: 'Структура',
+      path: RoutesUrls.structure,
+      icon: <StructureIcon />,
+      isAdmin: true,
+      isUser: true,
+    },
+    {
+      title: 'Штатное рассписание',
+      path: RoutesUrls.schedule,
+      icon: <ScheduleIcon />,
+      isAdmin: true,
+      isUser: true,
     },
     {
       title: t('cm:routes.businessTrips'),
       path: RoutesUrls.businessTrips,
       icon: <BtTableIcon />,
-      isTeacher: true,
-      isStudent: true,
+      isAdmin: true,
+      isUser: true,
     },
     {
       title: t('cm:routes.reports'),
       path: RoutesUrls.reports,
       icon: <ReportsIcon />,
-      isTeacher: true,
-      isStudent: true,
+      isAdmin: true,
+      isUser: true,
     },
     {
       title: t('cm:bottomLinks.settings'),
       path: RoutesUrls.settings,
       icon: <SettingsIcon />,
-      isTeacher: true,
-      isStudent: false
+      isAdmin: true,
+      isUser: false
     }
   ];
 
@@ -82,7 +101,7 @@ export const Navigation: FC<NavigationProps> = () => {
     <>
       <Sider
         routes={routes
-          .filter((x) => x[user?.type === 1 ? 'isTeacher' : 'isStudent'])
+          .filter((x) => x[user?.type === 1 ? 'isAdmin' : 'isUser'])
           .map((item) => {
             return (
               <SiderButton
@@ -113,7 +132,7 @@ export const Navigation: FC<NavigationProps> = () => {
       {windowWidth <= 768 ? (
         <TabBar
           routes={routes
-            .filter((x) => x[user?.type === 1 ? 'isTeacher' : 'isStudent'])
+            .filter((x) => x[user?.type === 1 ? 'isAdmin' : 'isUser'])
             .map((item) => {
               return <TabbarButton key={item.path} path={item.path} icon={item.icon} />;
             })}

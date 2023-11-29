@@ -33,7 +33,7 @@ export const Router = () => {
     // only execute the effect first time around
     if (!effectCalled.current) {
       // checkSuccessHandler();
-      navigate(RoutesUrls.home);
+      navigate(RoutesUrls.employees);
       effectCalled.current = true;
     }
   }, [navigate]);
@@ -45,8 +45,6 @@ export const Router = () => {
       {/* <Route path={RoutesUrls.root}> */}
       <Route path={RoutesUrls.root} element={createProtectedElement(<BaseLayout />)}>
         {/* <Route index element={<EmptyPage>Index page</EmptyPage>} /> */}
-        {/* <Route index path={RoutesUrls.home} element={<HomePage />} /> */}
-        <Route path={RoutesUrls.home} element={<HomePage />} />
         <Route path={RoutesUrls.settings} element={<SettingsPage />} />
         <Route path={RoutesUrls.logout} element={<LogoutPage />} />
         <Route path={RoutesUrls.notFound} element={<NotFoundPage />} />

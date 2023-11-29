@@ -21,7 +21,7 @@ export const errorHandler = (err: ApiError) => {
     cookie.remove('_auth_storage', options);
     cookie.remove('_auth_type', options);
     cookie.remove('_auth', options);
-    window.location.replace('/lmskgma/login');
+    window.location.replace('/login');
   }
 
   return Promise.reject(err);

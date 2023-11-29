@@ -93,7 +93,6 @@ export default ({ mode }: { mode: string }) => {
         ...srcAliases,
       },
     },
-    base: '/lmskgma/',
     server: {
       port: 3000,
     },

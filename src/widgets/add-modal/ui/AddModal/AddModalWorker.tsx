@@ -32,7 +32,7 @@ export const AddModalWorker: FC<{set:()=>void}> = ( {set} ) => {
     <div className="top-0 left-0 bg-black/[.4] w-[100vw] h-[100vh] fixed z-50flex justify-center items-center" onClick={()=>set()}>
         <form className="border border-[2px] border-[black] w-[350px] m-auto flex flex-col p-[20px] bg-white rounded-[20px]" onClick={(e)=>e.stopPropagation()} onSubmit={handleForm} >
             <input type="text" className="border-solid border-2 p-[3px] rounded" placeholder="Сотрудник" name="worker"/>
-            <label htmlFor="structure">Структура
+            <label htmlFor="structure">{t('cm:modal.structure')}
                 <br />
                 <select name="structure" id="structure" className="w-[100%]">
                     <option value="mon">МОН</option>
@@ -41,7 +41,7 @@ export const AddModalWorker: FC<{set:()=>void}> = ( {set} ) => {
                     <option value="mid">МИД</option>
                 </select>
             </label>
-            <label htmlFor="job">Должность
+            <label htmlFor="job">{t('cm:modal.jobTitle')}
                 <br />
                 <select name="job" id="job" className="w-[100%]">
                     <option value="engeneer">{t('cm:jobs.engeneer')}</option>

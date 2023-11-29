@@ -100,7 +100,9 @@
   },
   "modal":{
     "add":"Добавить",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "jobTitle":"Должность",
+    "structure":"Структура"
   },
   "jobs":{
     "front": "Frontend",
