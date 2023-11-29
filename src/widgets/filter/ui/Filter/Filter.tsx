@@ -1,6 +1,6 @@
 import { FC } from "react"
 
-export const Filter: FC<{handleVis: () => void, page: 'bt'|'emp'}> = ({ handleVis, page }) => {
+export const Filter: FC<{handleVis: () => void, page: 'bt'|'emp', role: 'admin'| 'user'}> = ({ handleVis, page, role }) => {
 
 
 
@@ -26,8 +26,10 @@ export const Filter: FC<{handleVis: () => void, page: 'bt'|'emp'}> = ({ handleVi
         </div>
           
         }
-       
+       {role === 'admin' ? 
         <button className='w-[120px] p-[10px] rounded text-white bg-[green]' onClick={()=>handleVis()}>Добавить</button>
+        :null
+       }
     </div>
   )
 }

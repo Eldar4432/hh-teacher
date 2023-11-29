@@ -64,7 +64,7 @@ const handleVis = () =>{
       <div className={vis ? "absolute z-50" : "hidden"}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page='bt'/>
+      <Filter handleVis={handleVis} page='bt' role='user'/>
       <Table columns={columns} dataSource={data} />
     </>
   );

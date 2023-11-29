@@ -51,7 +51,7 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? "absolute z-50" : "hidden"}>
         <AddModalWorker set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page='emp'/>
+      <Filter handleVis={handleVis} page='emp' role='user'/>
       <Table columns={columns} dataSource={data}/>
     </>
   );

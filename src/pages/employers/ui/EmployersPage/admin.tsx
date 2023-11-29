@@ -55,7 +55,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? 'absolute z-50': 'hidden'}>
         <AddModalWorker set={handleVis}/>
       </div>
-      <Filter handleVis={handleVis} page='emp'/>
+      <Filter handleVis={handleVis} page='emp' role='admin'/>
       <Table columns={columns} dataSource={data} bordered/>
     </>
   );

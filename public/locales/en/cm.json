@@ -72,5 +72,15 @@
     "rec_ruk_kontrrab": "Org. educ. proc.",
     "summ": "Sum",
     "service": "Service"
+  },
+  "modal":{
+    "add":"Add",
+    "cancel": "Cancel"
+  },
+  "jobs":{
+    "front": "Frontend",
+    "back":"Backend",
+    "design":"Designer",
+    "engeneer":"Software Engeneer"
   }
 }

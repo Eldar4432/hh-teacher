@@ -66,7 +66,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? "absolute z-50" : "hidden"}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page='bt'/>
+      <Filter handleVis={handleVis} page='bt' role={'admin'}/>
       <Table columns={columns} dataSource={data}/>
     </>
   );

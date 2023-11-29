@@ -59,10 +59,16 @@ export const Navigation: FC<NavigationProps> = () => {
       isTeacher: true,
       isStudent: true,
     },
+    {
+      title: t('cm:bottomLinks.settings'),
+      path: RoutesUrls.settings,
+      icon: <SettingsIcon />,
+      isTeacher: true,
+      isStudent: false
+    }
   ];
 
   const settings = [
-    { title: t('cm:bottomLinks.settings'), path: RoutesUrls.settings, icon: <SettingsIcon /> },
     { title: t('cm:bottomLinks.logout'), path: RoutesUrls.logout, icon: <LogoutIcon /> },
   ];
 

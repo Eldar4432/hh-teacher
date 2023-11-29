@@ -36,7 +36,7 @@ export const AddModalBusinessTrip:FC<{set:()=>void}> = ( {set} ) => {
     <div className="top-0 left-0 bg-black/[.4] w-[100vw] h-[100vh] fixed z-50 flex justify-center items-center" onClick={()=>set()} >
         <form className="border border-[2px] w-[400px] m-auto flex flex-col p-[20px] bg-white rounded-[20px]" onClick={(e)=>e.stopPropagation()} onSubmit={handleHandle} >
             <input type="text" placeholder="Командировка" name='btName' className="p-[5px] border-solid"/>
-            <label className={'my-[24px]'} htmlFor="">Тип командировки <br />
+            <label className={'my-[24px]'} htmlFor="">Тип командировки<br />
                 <select name="btType" id="" className="w-[100%] border-solid">
                     <option value="job">Служебная</option>
                     <option value="visit">Приглассительная</option>
