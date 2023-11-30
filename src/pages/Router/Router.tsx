@@ -13,6 +13,7 @@ import { TablePage } from '~pages/businessTrips';
 import { SchedulePage } from '~pages/schedule'
 import { EmployersPage } from '~pages/employers';
 import { StructurePage } from '~pages/structure';
+import { ReportsPage } from '~pages/reports';
 
 export const redirectUrl = RoutesUrls.login;
 
@@ -40,6 +41,7 @@ export const Router = () => {
 
       <Route path={RoutesUrls.root} element={createProtectedElement(<BaseLayout />)}>
         <Route path={RoutesUrls.settings} element={<SettingsPage />} />
+        <Route path={RoutesUrls.reports} element={<ReportsPage />}/>
         <Route path={RoutesUrls.structure} element={<StructurePage />} />
         <Route path={RoutesUrls.schedule} element={<SchedulePage />} />
         <Route path={RoutesUrls.logout} element={<LogoutPage />} />

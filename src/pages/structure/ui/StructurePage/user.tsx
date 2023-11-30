@@ -2,7 +2,6 @@ import { Space, Table } from 'antd';
 import { atom, useAtom } from 'jotai';
 import { FC } from 'react';
 import { AddModalWorker } from '~widgets/add-modal';
-import { Filter } from '~widgets/filter';
 
 const visAtom = atom(false)
 
