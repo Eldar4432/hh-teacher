@@ -30,11 +30,11 @@ export const AuthProviderFront: React.FC<AuthProviderFrontProps> = ({ children }
       }
 
       if (user.type === 1) {
-        console.log('teacher');
+        console.log('admin');
       }
 
       if (user.type === 2) {
-        console.log('student');
+        console.log('user');
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

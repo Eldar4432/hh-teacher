@@ -35,7 +35,8 @@
     "logout": "Выход",
     "settings": "Настройки",
     "structure": "Структура",
-    "schedule":"Штатное рассписание"
+    "schedule":"Штатное рассписание",
+    "reports":"Отчеты"
   },
   "notifications": {
     "success": {

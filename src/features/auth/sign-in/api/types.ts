@@ -1,5 +1,5 @@
 export interface ApiSignInData {
-  email: string;
+  login: string;
   password: string;
 }
 

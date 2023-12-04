@@ -3,7 +3,6 @@
 import path from 'path';
 import fs from 'fs';
 
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import { defineConfig, loadEnv } from 'vite';
 // import ssr from 'vite-plugin-ssr/plugin';
 
@@ -13,8 +12,6 @@ import svgr from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
 import jotaiDebugLabel from 'jotai/babel/plugin-debug-label';
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh';
-
-import { server } from './src/shared/lib/test/mocks/server';
 
 const rootPath = __dirname;
 
@@ -94,8 +91,7 @@ export default ({ mode }: { mode: string }) => {
       },
     },
     server: {
-      port: 3000,
-      open: true
+      port: 3000
     },
     test: {
       globals: true,

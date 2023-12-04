@@ -15,7 +15,6 @@ export const LogoutPage: React.FC<LogoutPageProps> = () => {
   // const resetUser = useResetUser();
   const setUser = useSetUser();
 
-
   const handleSignOut: SignOutViewProps['onSignOut'] = useCallback(() => {
     localStorage.removeItem('image');
     // resetUser();

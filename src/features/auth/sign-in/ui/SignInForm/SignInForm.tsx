@@ -23,7 +23,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
   const authSignIn = useSignIn();
   const { t } = useTranslation();
   const [message, setMessage] = useState('');
-  const [login, setLogin] = useState('');
+  const [log, setLogin] = useState('');
   const [pass, setPass] = useState('');
 
   const handleSubmit =
@@ -33,7 +33,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
 
       // mockSignIn(payload).then(({ data }) => {
 
-      signIn({ email: login, password: pass })
+      signIn({ login: log, password: pass })
         .then(({ data, error, message }) => {
           console.error({ data, error, message });
 
@@ -69,7 +69,7 @@ export const SignInForm: React.FC<SignInFormProps> = ({
         <form id={formId} onSubmit={handleSubmit} noValidate className={styles.form}>
           <div className={styles.inputsWrapper}>
             <Input
-              value={login}
+              value={log}
               onChange={(e) => setLogin(e.target.value)}
               name="login"
               className="lmsInputSignIn"

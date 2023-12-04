@@ -1,7 +1,7 @@
 import { Space, Table } from 'antd';
 import { atom, useAtom } from 'jotai';
 import { FC } from 'react';
-import { AddModalWorker } from '~widgets/add-modal';
+import { AddModalBusinessTrip } from '~widgets/add-modal';
 import { Filter } from '~widgets/filter';
 
 const visAtom = atom(false)
@@ -49,7 +49,7 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
   return (
     <>
       <div className={vis ? "absolute z-50" : "hidden"}>
-        <AddModalWorker set={handleVis} />
+        <AddModalBusinessTrip set={handleVis} />
       </div>
       <Table columns={columns} dataSource={data}/>
     </>

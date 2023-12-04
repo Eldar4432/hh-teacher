@@ -8,6 +8,6 @@ export enum RoutesUrls {
   logout = '/logout',
   settings = '/settings',
   notFound = '/not-found',
-  structure= '/structure',
-  schedule= '/schedule',
+  structure = '/structure',
+  schedule = '/schedule',
 }

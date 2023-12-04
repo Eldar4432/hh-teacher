@@ -8,20 +8,17 @@ import { useTranslation } from '~shared/lib/i18n';
 
 import { RoutesUrls } from '~shared/lib/router';
 
-import { Sider, 
-        SiderButton, 
-        TabBar, 
-        TabbarButton, 
-        useWindowInnerWidth } from '~shared/ui';
-        
-import { BtTableIcon, 
-        HomeIcon, 
-        LogoutIcon, 
-        ReportsIcon, 
-        ScheduleIcon, 
-        SettingsIcon, 
-        StructureIcon, 
-        UsersIcon } from '~shared/ui/Icons/icons';
+import { Sider, SiderButton, TabBar, TabbarButton, useWindowInnerWidth } from '~shared/ui';
+
+import {
+  BtTableIcon,
+  LogoutIcon,
+  ReportsIcon,
+  ScheduleIcon,
+  SettingsIcon,
+  StructureIcon,
+  UsersIcon,
+} from '~shared/ui/Icons/icons';
 
 export interface NavigationProps {}
 
@@ -40,7 +37,7 @@ export const Navigation: FC<NavigationProps> = () => {
         document.body.style.overflow = 'hidden';
       }
     }
-  }, [collapsedAtom]);
+  }, [collapsedAtom, windowWidth]);
 
   const routes = [
     {
@@ -83,8 +80,8 @@ export const Navigation: FC<NavigationProps> = () => {
       path: RoutesUrls.settings,
       icon: <SettingsIcon />,
       isAdmin: true,
-      isUser: false
-    }
+      isUser: false,
+    },
   ];
 
   const settings = [
