@@ -14,28 +14,53 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
   const columns = [
     {
       title: '№',
-      dataIndex: 'id',
+      dataIndex: 'id_employee',
       key: 'id',
     },
     {
-      title: 'Сотрудник',
-      dataIndex: 'name',
+      title: 'Имя',
+      children: [
+        {
+          dataIndex: 'surname',
+          width: '0',
+        },
+        {
+          width: '0',
+          dataIndex: 'name',
+        },
+        {
+          width: '0',
+          dataIndex: 'patronymic',
+        },
+      ],
       key: 'name',
     },
     {
-      title: 'Структура',
-      key: 'structure',
+      title: 'ПИН',
+      dataIndex: 'pin',
+      key: 'pin',
     },
     {
-      title: 'Должность',
-      key: 'job',
+      title: 'Дата рождения',
+      key: 'birthDate',
+      dataIndex: 'birth_date',
+    },
+    {
+      title: 'Активен',
+      key: 'active',
+      render: () => (
+        <Space size="middle">
+          <input type="checkbox" name="active" id="active" />
+        </Space>
+      ),
     },
     {
       title: 'Action',
       key: 'action',
       render: () => (
         <Space size="middle">
-          <button className="p-[5px] text-white rounded">Удалить</button>
+          <button className="p-[3px] rounded text-white">Редактировать</button>
+          <button className="p-[3px] rounded text-white">Удалить</button>
         </Space>
       ),
     },
@@ -50,8 +75,8 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? 'absolute z-50' : 'hidden'}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page="emp" role="user" />
-      <Table columns={columns} dataSource={data} />
+      <Filter handleVis={handleVis} page="emp" role="admin" />
+      <Table columns={columns} dataSource={data} bordered />
     </>
   );
 };

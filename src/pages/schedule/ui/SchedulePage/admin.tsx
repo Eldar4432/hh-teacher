@@ -18,6 +18,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Структура',
+      dataIndex: 'department',
       key: 'structure',
     },
     {
@@ -27,6 +28,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Должность',
+      dataIndex: 'post',
       key: 'job',
     },
     {

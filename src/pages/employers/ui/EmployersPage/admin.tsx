@@ -18,13 +18,17 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       key: 'id',
     },
     {
-      title: 'Ф.И.О.',
+      title: 'Фамилия',
+      dataIndex: 'surname',
+      key: 'surname',
+    },
+    {
+      title: 'Имя',
       dataIndex: 'name',
       key: 'name',
     },
     {
       title: 'ПИН',
-      dataIndex: 'pin',
       key: 'pin',
     },
     {
@@ -34,11 +38,10 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Активен',
-      dataIndex: 'active',
       key: 'active',
-      render: (_: any, record: any) => (
+      render: () => (
         <Space size="middle">
-          <input type="checkbox" name="active" id="active" checked={record.active ? true : false} />
+          <input type="checkbox" name="active" id="active" />
         </Space>
       ),
     },

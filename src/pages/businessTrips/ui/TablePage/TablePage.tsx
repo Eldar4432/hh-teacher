@@ -1,9 +1,13 @@
-import { FC, lazy } from 'react';
+import { FC, lazy, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+
+import { useAtom } from 'jotai';
 
 import { i18n } from '~shared/lib/i18n';
 
 import { useUser } from '~entities/user';
+import { getBusiness } from '~pages/businessTrips/api';
+import { dataAtom } from '~pages/businessTrips/lib';
 
 const AdminTablePage = lazy(() =>
   import('./admin').then((module) => ({ default: module.AdminTablePage }))
@@ -15,16 +19,15 @@ const EmployerTablePage = lazy(() =>
 
 export interface TablePageProps {}
 
-const data = [
-  {
-    id: 1,
-    name: 'John Doe',
-  },
-];
-
 export const TablePage: FC<TablePageProps> = () => {
   const user = useUser();
   const { t } = i18n;
+
+  const [data, setData] = useAtom(dataAtom);
+
+  useEffect(() => {
+    setData(getBusiness());
+  }, []);
 
   return (
     <>

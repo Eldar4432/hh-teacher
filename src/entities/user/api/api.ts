@@ -1,4 +1,7 @@
-import { ApiResponseData, api } from '~shared/api';
+import axios from 'axios';
+
+import { defaultLocale } from '~shared/lib/l10n';
+import { ApiResponseData } from '~shared/api';
 import { setAsyncTimeout } from '~shared/lib/utils';
 
 // import { routes } from './routes';
@@ -8,24 +11,14 @@ export const getUser = async () => {
   let response;
 
   try {
-    // response = await api.post<any, ApiResponseData<ApiUserData>>(routes.getUserData());
-
-    response = {
-      data: {
-        authState: {
-          type: 1,
-          s: 'Шаршенбаева',
-          n: 'Асель',
-          p: 'Кубанычбековна',
-          exp: Date.now() + 12 * 60 * 60 * 1000,
-        },
-        token: 'token',
-        tokenType: 'cookie',
-        expiresIn: 4320,
+    response = await axios.post('http://localhost:5000/mms/api/user/check', {
+      withCredentials: true,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Accept-Language': defaultLocale,
       },
-      message: 'success',
-      error: false,
-    };
+    });
   } catch (error: any) {
     response = error?.response?.data;
   }

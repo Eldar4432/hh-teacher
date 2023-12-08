@@ -1,5 +1,6 @@
 import { Space, Table } from 'antd';
 import { atom, useAtom } from 'jotai';
+
 import { FC } from 'react';
 
 import { AddModalBusinessTrip } from '~widgets/add-modal';
@@ -16,24 +17,22 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       key: 'id',
     },
     {
-      title: 'Сотрудник',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Аталышы',
+      dataIndex: 'department_kg',
+      key: 'atalysh',
     },
     {
-      title: 'Структура',
-      key: 'structure',
-    },
-    {
-      title: 'Должность',
-      key: 'job',
+      title: 'Название',
+      dataIndex: 'department_ru',
+      key: 'title',
     },
     {
       title: 'Action',
       key: 'action',
       render: () => (
         <Space size="middle">
-          <button className="p-[5px] text-white rounded">Удалить</button>
+          <button className="p-[3px] rounded text-white">Редактировать</button>
+          <button className="p-[3px] rounded text-white">Удалить</button>
         </Space>
       ),
     },
@@ -48,7 +47,7 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? 'absolute z-50' : 'hidden'}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={data} bordered />
     </>
   );
 };

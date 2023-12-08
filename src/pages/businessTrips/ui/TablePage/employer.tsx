@@ -9,14 +9,12 @@ import { Filter } from '~widgets/filter';
 const visAtom = atom(false);
 
 export const EmployerTablePage: FC<{ data: any }> = ({ data }) => {
-  console.log(data);
-
   const [vis, setVis] = useAtom(visAtom);
 
   const columns = [
     {
       title: '№',
-      dataIndex: 'id',
+      dataIndex: 'id_business',
       key: 'id',
     },
     {
@@ -26,22 +24,36 @@ export const EmployerTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Название командировки',
+      dataIndex: 'business_ru',
       key: 'Название командировки',
     },
     {
       title: 'Время командировки',
-      key: 'Время командировки',
+      children: [
+        {
+          title: 'Дата начала',
+          dataIndex: 'beg_date',
+        },
+        {
+          title: 'Дата окончания',
+          dataIndex: 'end_date',
+        },
+      ],
+      key: 'date',
     },
     {
       title: 'Страна',
+      dataIndex: 'country',
       key: 'Страна',
     },
     {
       title: 'Вид командировки',
+      dataIndex: 'business_type',
       key: 'Вид командировки',
     },
     {
       title: 'Тип командировки',
+      dataIndex: 'business_trip',
       key: 'Тип командировки',
     },
     {

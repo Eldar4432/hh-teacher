@@ -18,10 +18,12 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Аталышы',
+      dataIndex: 'department_kg',
       key: 'atalysh',
     },
     {
       title: 'Название',
+      dataIndex: 'department_ru',
       key: 'title',
     },
     {

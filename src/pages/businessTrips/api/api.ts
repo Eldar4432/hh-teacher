@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const getPersonal = async () => {
+export const getBusiness = async () => {
   let response;
 
   try {
-    response = await axios.get('http://localhost:5000/mms/api/personal', { withCredentials: true });
+    response = await axios.get('http://localhost:5000/mms/api/business', { withCredentials: true });
   } catch (error: any) {
     response = error?.response?.data;
   }

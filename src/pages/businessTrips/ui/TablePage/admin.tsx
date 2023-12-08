@@ -14,7 +14,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
   const columns = [
     {
       title: '№',
-      dataIndex: 'id',
+      dataIndex: 'id_business',
       key: 'id',
     },
     {
@@ -24,22 +24,36 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Название командировки',
+      dataIndex: 'business_ru',
       key: 'Название командировки',
     },
     {
       title: 'Время командировки',
-      key: 'Время командировки',
+      children: [
+        {
+          title: 'Дата начала',
+          dataIndex: 'beg_date',
+        },
+        {
+          title: 'Дата окончания',
+          dataIndex: 'end_date',
+        },
+      ],
+      key: 'date',
     },
     {
       title: 'Страна',
+      dataIndex: 'country',
       key: 'Страна',
     },
     {
       title: 'Вид командировки',
+      dataIndex: 'business_type',
       key: 'Вид командировки',
     },
     {
       title: 'Тип командировки',
+      dataIndex: 'business_trip',
       key: 'Тип командировки',
     },
     {
@@ -48,7 +62,6 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       render: () => (
         <Space size="middle">
           <button className="p-[5px] text-white rounded">Удалить</button>
-          <button className="p-[5px] text-white rounded">Редактировать</button>
         </Space>
       ),
     },
@@ -63,7 +76,7 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       <div className={vis ? 'absolute z-50' : 'hidden'}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page="bt" role="admin" />
+      <Filter handleVis={handleVis} page="bt" role="user" />
       <Table columns={columns} dataSource={data} />
     </>
   );

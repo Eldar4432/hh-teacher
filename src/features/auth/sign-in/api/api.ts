@@ -13,48 +13,9 @@ export const signIn = async (data: ApiSignInData) => {
 
   try {
     // response = await api.post<any, ApiResponseData<ApiSignInResponseData>>(routes.signIn(), data);
-    response = await axios.post('http://localhost:5000/mms/api/user/login', data);
-
-    // if (data?.email === 'teacher' && data?.password === 'teacher') {
-    //   response = {
-    //     data: {
-    //       authState: {
-    //         type: 1,
-    //         s: 'Шаршенбаева',
-    //         n: 'Асель',
-    //         p: 'Кубанычбековна',
-    //         exp: Date.now() + 12 * 60 * 60 * 1000,
-    //       },
-    //       token: 'token',
-    //       tokenType: 'cookie',
-    //       expiresIn: 4320,
-    //     },
-    //     message: 'success',
-    //     error: false,
-    //   };
-    // } else if (data?.email === 'student' && data?.password === 'student') {
-    //   response = {
-    //     data: {
-    //       authState: {
-    //         type: 2,
-    //         s: 'Асанов',
-    //         n: 'Асан',
-    //         p: 'Асанович',
-    //         exp: Date.now() + 12 * 60 * 60 * 1000,
-    //       },
-    //       token: 'token',
-    //       tokenType: 'cookie',
-    //       expiresIn: 4320,
-    //     },
-    //     message: 'success',
-    //     error: false,
-    //   };
-    // } else {
-    //   response = { data: false, message: 'getUserError', error: true };
-    // }
-
-    // const token = response.data.token;
-    // api.interceptors.request.use(createAuthenticatedRequestHandler(token, 'signIn'));
+    response = await axios.post('http://localhost:5000/mms/api/user/login', data, {
+      withCredentials: true,
+    });
   } catch (error: any) {
     response = error?.response?.data;
   }
