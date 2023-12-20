@@ -13,8 +13,9 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
   const columns = [
     {
       title: '№',
-      dataIndex: 'id',
+      dataIndex: 'id_employee',
       key: 'id',
+      width: '0',
     },
     {
       title: 'Структура',

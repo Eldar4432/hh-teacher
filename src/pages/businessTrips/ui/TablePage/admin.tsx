@@ -1,15 +1,21 @@
+import { FC, useEffect, useState } from 'react';
+
 import { Space, Table } from 'antd';
 import { atom, useAtom } from 'jotai';
 
-import { FC } from 'react';
-
 import { AddModalBusinessTrip } from '~widgets/add-modal';
 import { Filter } from '~widgets/filter';
+import { deleteBusinessTrip } from '~entities/businessTrip';
 
 const visAtom = atom(false);
 
-export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
+export const AdminTablePage: FC<{ data: any; trips: () => void }> = ({ data, trips }) => {
   const [vis, setVis] = useAtom(visAtom);
+
+  const deleteHandler = (id: any) => {
+    deleteBusinessTrip(id);
+    trips();
+  };
 
   const columns = [
     {
@@ -17,10 +23,15 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
       dataIndex: 'id_business',
       key: 'id',
     },
+    Table.EXPAND_COLUMN,
     {
-      title: 'ФИО сотрудника',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Cотрудник',
+      children: [
+        { dataIndex: 'surname', width: '0' },
+        { dataIndex: 'name', width: '0' },
+        { dataIndex: 'patronymic', width: '0' },
+      ],
+      key: 'employer',
     },
     {
       title: 'Название командировки',
@@ -33,13 +44,23 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
         {
           title: 'Дата начала',
           dataIndex: 'beg_date',
+          render: (_: any, record: any) => {
+            const sDate = new Date(record.beg_date).toLocaleDateString();
+
+            return <p>{sDate}</p>;
+          },
         },
         {
           title: 'Дата окончания',
           dataIndex: 'end_date',
+          render: (_: any, record: any) => {
+            const eDate = new Date(record.end_date).toLocaleDateString();
+
+            return <p>{eDate}</p>;
+          },
         },
       ],
-      key: 'date',
+      key: 'Время командировки',
     },
     {
       title: 'Страна',
@@ -48,20 +69,26 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
     },
     {
       title: 'Вид командировки',
-      dataIndex: 'business_type',
+      dataIndex: 'business_trip',
       key: 'Вид командировки',
     },
     {
       title: 'Тип командировки',
-      dataIndex: 'business_trip',
+      dataIndex: 'business_type',
       key: 'Тип командировки',
     },
     {
       title: 'Action',
       key: 'action',
-      render: () => (
+      render: (_: any, render: any) => (
         <Space size="middle">
-          <button className="p-[5px] text-white rounded">Удалить</button>
+          <button
+            className="p-[5px] text-white rounded"
+            onClick={() => deleteHandler(render.id_business)}
+          >
+            Удалить
+          </button>
+          <button className="p-[5px] text-white rounded">Редактировать</button>
         </Space>
       ),
     },
@@ -73,11 +100,17 @@ export const AdminTablePage: FC<{ data: any }> = ({ data }) => {
 
   return (
     <>
+      <Filter handleVis={handleVis} page="bt" role="admin" />
+      <Table
+        columns={columns}
+        dataSource={data}
+        expandable={{
+          expandedRowRender: (record) => <p>{record.department}</p>,
+        }}
+      />
       <div className={vis ? 'absolute z-50' : 'hidden'}>
         <AddModalBusinessTrip set={handleVis} />
       </div>
-      <Filter handleVis={handleVis} page="bt" role="user" />
-      <Table columns={columns} dataSource={data} />
     </>
   );
 };

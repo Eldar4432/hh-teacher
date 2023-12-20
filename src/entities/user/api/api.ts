@@ -1,26 +1,18 @@
-import axios from 'axios';
-
-import { defaultLocale } from '~shared/lib/l10n';
-import { ApiResponseData } from '~shared/api';
+import { ApiResponseData, api, createAuthenticatedRequestHandler } from '~shared/api';
 import { setAsyncTimeout } from '~shared/lib/utils';
 
-// import { routes } from './routes';
-import { ApiUserData } from './types';
+import { routes } from './routes';
+import { ApiSignInResponseData } from './types';
 
 export const getUser = async () => {
   let response;
 
   try {
-    response = await axios.post('http://localhost:5000/mms/api/user/check', {
-      withCredentials: true,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Accept-Language': defaultLocale,
-      },
-    });
+    response = await api.post<any, ApiResponseData<ApiSignInResponseData>>(routes.getUserData());
   } catch (error: any) {
     response = error?.response?.data;
+    localStorage.removeItem(import.meta.env.VITE_TOKEN_NAME);
+    localStorage.removeItem(import.meta.env.VITE_TOKEN_TTL);
   }
 
   return response;
@@ -46,5 +38,5 @@ export const mockGetUser = async () => {
     };
   }, 1000);
 
-  return result as ApiResponseData<ApiUserData>;
+  return result as ApiResponseData<ApiSignInResponseData>;
 };

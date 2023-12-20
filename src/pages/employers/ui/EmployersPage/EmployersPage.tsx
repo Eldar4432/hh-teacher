@@ -4,8 +4,8 @@ import { FC, lazy, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import { useUser } from '~entities/user';
-import { getPersonal } from '~pages/employers/api';
-import { dataAtom } from '~pages/employers/lib';
+import { getPersonal } from '~entities/employers/api';
+import { dataAtom } from '~entities/employers/model';
 import { i18n } from '~shared/lib/i18n';
 
 export interface EmployersPageProps {}
@@ -24,8 +24,12 @@ export const EmployersPage: FC<EmployersPageProps> = () => {
 
   const [data, setData] = useAtom(dataAtom);
 
-  useEffect(() => {
+  const handleUsers = () => {
     setData(getPersonal());
+  };
+
+  useEffect(() => {
+    handleUsers();
   }, []);
 
   return (
@@ -33,7 +37,11 @@ export const EmployersPage: FC<EmployersPageProps> = () => {
       <Helmet>
         <title>{t('cm:pages.employers')}</title>
       </Helmet>
-      {user?.type === 1 ? <AdminTablePage data={data} /> : <UserTablePage data={data} />}
+      {user?.type === 1 ? (
+        <AdminTablePage data={data} handleUsers={handleUsers} />
+      ) : (
+        <UserTablePage data={data} />
+      )}
     </>
   );
 };

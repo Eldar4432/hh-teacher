@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { ApiResponseData, api } from '~shared/api';
 
 import { routes } from './routes';
@@ -10,12 +8,13 @@ export const signOut = async () => {
   let response;
 
   try {
-    response = await axios.post('http://localhost:5000/mms/api/user/logout', {
-      withCredentials: true,
-    });
+    response = await api.post<any, ApiResponseData<ApiSignOutResponseData>>(routes.signOut(), {});
   } catch (error: any) {
     response = error?.response?.data;
   }
+
+  localStorage.removeItem(import.meta.env.VITE_TOKEN_NAME);
+  localStorage.removeItem(import.meta.env.VITE_TOKEN_TTL);
 
   return response;
 };

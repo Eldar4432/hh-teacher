@@ -3,6 +3,7 @@
   border: 1px solid var(--stroke) !important;
   border-radius: 10px;
   font-size: 14px;
+  margin: 5px 0;
 }
 
 .lmsInput:focus {
@@ -11,6 +12,10 @@
 .lmsInput:hover {
   border-color: var(--primary) !important;
   border-inline-end-width: 1px !important;
+}
+.lmsInput[type="date"]{
+  height: 40px;
+  padding: 11px;
 }
 
 .lmsInputSignIn {

@@ -1,9 +1,8 @@
-import axios from 'axios';
-
-import { ApiResponseData } from '~shared/api';
+import { ApiResponseData, api, createAuthenticatedRequestHandler } from '~shared/api';
 import { setAsyncTimeout } from '~shared/lib/utils';
+// import { LocalStorageCache } from '~shared/lib/cache';
 
-// import { routes } from './routes';
+import { routes } from './routes';
 
 import { ApiSignInData, ApiSignInResponseData } from './types';
 
@@ -12,16 +11,20 @@ export const signIn = async (data: ApiSignInData) => {
   let response;
 
   try {
-    // response = await api.post<any, ApiResponseData<ApiSignInResponseData>>(routes.signIn(), data);
-    response = await axios.post('http://localhost:5000/mms/api/user/login', data, {
-      withCredentials: true,
-    });
+    response = await api.post<any, ApiResponseData<ApiSignInResponseData>>(routes.signIn(), data);
+
+    const tokenType = response.data.tokenType;
+    const tokenRes = response.data.token;
+    const ttl = response.data.authState.exp;
+    const token = `${tokenType} ${tokenRes}`;
+    // LocalStorageCache.set(import.meta.env.VITE_TOKEN_NAME, token, ttl);
+    localStorage.setItem(import.meta.env.VITE_TOKEN_NAME, JSON.stringify(token));
+    localStorage.setItem(import.meta.env.VITE_TOKEN_TTL, JSON.stringify(ttl));
   } catch (error: any) {
     response = error?.response?.data;
   }
 
-  return response.data;
-  // return api.post<any, ApiResponseData<ApiSignInResponseData>>(routes.signIn(), data);
+  return response;
 };
 
 export const mockSignIn = async (_data?: ApiSignInData) => {

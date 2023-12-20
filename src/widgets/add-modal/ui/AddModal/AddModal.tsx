@@ -1,20 +1,55 @@
 import { useAtom } from 'jotai';
 
-import { FC, MutableRefObject, useRef } from 'react';
+import { FC, useEffect, useState } from 'react';
+
+import {
+  getBusinessTrip,
+  getBusinessType,
+  getCountry,
+  getDepartment,
+  getDistrict,
+  getEmployee,
+  // getPost,
+  getRegion,
+  // getRole,
+} from '~entities/shared';
+import { Button, Input } from '~shared/ui';
 
 import { locAtom } from '~widgets/add-modal/';
 
 export const AddModalBusinessTrip: FC<{ set: () => void }> = ({ set }) => {
   const [loc, setLoc] = useAtom(locAtom);
 
-  const handleLoc = (e: any) => {
-    setLoc(e.target.value);
+  const [district, setDistrict]: any = useState();
+  // const [role, setRole]: any = useState();
+  const [department, setDepartment]: any = useState();
+  const [employee, setEmployee]: any = useState();
+  // const [post, setPost]: any = useState();
+  const [bType, setBusinessType]: any = useState();
+  const [bTrip, setBusinessTrip]: any = useState();
+  const [region, setRegion]: any = useState();
+  const [country, setCountry]: any = useState();
+
+  const [currentRegion, setCurrentRegion] = useState('1');
+
+  const getInfo = async () => {
+    setDistrict(await getDistrict());
+    // setRole(await getRole());
+    setDepartment(await getDepartment());
+    setEmployee(await getEmployee());
+    // setPost(await getPost());
+    setBusinessType(await getBusinessType());
+    setBusinessTrip(await getBusinessTrip());
+    setRegion(await getRegion());
+    setCountry(await getCountry());
   };
 
-  const prikaz: MutableRefObject<any> = useRef();
+  useEffect(() => {
+    getInfo();
+  }, []);
 
-  const prikazClick: () => void = () => {
-    prikaz.current.click();
+  const handleLoc = (e: any) => {
+    setLoc(e.target.value);
   };
 
   const handleHandle = (event: any) => {
@@ -33,6 +68,10 @@ export const AddModalBusinessTrip: FC<{ set: () => void }> = ({ set }) => {
     event.currentTarget.reset();
   };
 
+  const handleRegion = (e: any) => {
+    setCurrentRegion(e.target.value);
+  };
+
   return (
     <div
       className="top-0 left-0 bg-black/[.4] w-[100vw] h-[100vh] fixed z-50 flex justify-center items-center"
@@ -43,7 +82,7 @@ export const AddModalBusinessTrip: FC<{ set: () => void }> = ({ set }) => {
         onClick={(e) => e.stopPropagation()}
         onSubmit={handleHandle}
       >
-        <input
+        <Input
           type="text"
           placeholder="Командировка"
           name="btName"
@@ -52,49 +91,67 @@ export const AddModalBusinessTrip: FC<{ set: () => void }> = ({ set }) => {
         <label className="my-[24px]" htmlFor="">
           Тип командировки
           <br />
-          <select name="btType" id="" className="w-[100%] border-solid">
-            <option value="job">Служебная</option>
-            <option value="visit">Приглассительная</option>
+          <select id="" className="w-[100%] border-solid" onChange={handleLoc}>
+            {bType?.map((el: any) => (
+              <option key={el.id_business_type} value={el.id_business_type}>
+                {el.business_type}
+              </option>
+            ))}
           </select>
         </label>
+        {loc === '2' ? (
+          <>
+            <label htmlFor="">
+              Страна командировки
+              <br />
+              <select name="country" id="">
+                <option value="">Выберите страну</option>
+                {country?.map((el: any) => (
+                  <option key={el.id_country} value={el.id_country}>
+                    {el.country}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </>
+        ) : (
+          <>
+            <select
+              name="region"
+              id=""
+              className="w-[100%]"
+              onChange={handleRegion}
+              value={currentRegion}
+            >
+              <option value="">Выберите область</option>
+              {region?.map((el: any) => (
+                <option key={el.id_region} value={el.id_region}>
+                  {el.region}
+                </option>
+              ))}
+            </select>
+
+            <select name="district" id="">
+              <option value="">Выберите район</option>
+              {district
+                ?.filter((dist: any) => dist.id_region.toString() === currentRegion)
+                .map((el: any) => (
+                  <option key={el.id_district}>{el.district}</option>
+                ))}
+            </select>
+          </>
+        )}
         <label htmlFor="">
           Вид командировки
           <br />
-          <select name="btLoc" id="" className="border-solid w-[100%]" onChange={handleLoc}>
-            <option value="in">Внутренняя</option>
-            <option value="out">Внешняя</option>
+          <select name="btLoc" id="" className="border-solid w-[100%]">
+            {bTrip?.map((el: any) => (
+              <option key={el.id_business_trip} value={el.id_business_trip}>
+                {el.business_trip}
+              </option>
+            ))}
           </select>
         </label>
-        {loc === 'out' ? (
-          <label htmlFor="countrySelection" className="mt-[12px]">
-            Страна
-            <br />
-            <select name="country" id="countrySelection" className="w-[100%]">
-              <option value="usa">США</option>
-              <option value="uk">Великобритания</option>
-              <option value="ru">Россия</option>
-              <option value="kz">Казахстан</option>
-              <option value="bl">Белорусь</option>
-              <option value="au">Австрия</option>
-              <option value="aus">Австралия</option>
-            </select>
-          </label>
-        ) : (
-          <label htmlFor="regSelection" className="mt-[12px]">
-            Область
-            <br />
-            <select name="region" id="regSelection" className="w-[100%]">
-              <option value="c">Чуйская область</option>
-              <option value="n">Нарынская область</option>
-              <option value="o">Ошская область</option>
-              <option value="i">Иссык-Кульская область</option>
-              <option value="j">Жалал-Абадская область</option>
-              <option value="t">Таласская область</option>
-              <option value="b">Баткенская область</option>
-            </select>
-          </label>
-        )}
-
         <div className="flex justify-between my-[24px]">
           <div>
             <label htmlFor="startDate" className="block">
@@ -109,36 +166,43 @@ export const AddModalBusinessTrip: FC<{ set: () => void }> = ({ set }) => {
             <input type="date" name="endDate" />
           </div>
         </div>
-        <input
-          type="text"
-          placeholder="ФИО сотрудника"
-          name="name"
-          className="p-[5px] my-[24px] border-solid"
-        />
-        <input
+        <label htmlFor="">
+          Сотрудник
+          <br />
+          <select name="employer" id="" className="w-[100%]">
+            <option value="">Выберите сотрудника</option>
+            {employee?.map((el: any) => (
+              <option key={el.id_employee} value={el.id_employee}>
+                {el.surname} {el.name} {el.patronymic}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Департамент
+          <br />
+          <select name="" id="" className="w-[100%] h-[100%]">
+            {department?.map((el: any) => (
+              <option key={el.id_department}>{el.department}</option>
+            ))}
+          </select>
+        </label>
+        <Input
           type="text"
           placeholder="№ и дата приказа"
           name="order"
           className="p-[5px] border-solid"
         />
-        <input type="file" accept=".pdf, .doc, .docx" ref={prikaz} className="hidden" name="file" />
-        <div onClick={() => prikazClick()} className="my-[24px]">
-          Click
-        </div>
         <div className="flex justify-around mt-[24px]">
-          <button
-            type="reset"
+          <Button
             className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]"
             onClick={() => set()}
           >
             Отменить
-          </button>
-          <button
-            type="submit"
-            className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]"
-          >
+          </Button>
+          <Button className="border border-[2px] p-[5px] rounded-[10px] hover:text-[white] hover:bg-[blue]">
             Добавить
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -1,39 +1,26 @@
-import { Space, Table } from 'antd';
-import { atom, useAtom } from 'jotai';
+import { Table } from 'antd';
 
 import { FC } from 'react';
 
-import { AddModalBusinessTrip } from '~widgets/add-modal';
-import { Filter } from '~widgets/filter';
-
-const visAtom = atom(false);
-
 export const UserTablePage: FC<{ data: any }> = ({ data }) => {
-  const [vis, setVis] = useAtom(visAtom);
-
   const columns = [
     {
       title: '№',
       dataIndex: 'id_employee',
       key: 'id',
+      width: '0',
+    },
+    {
+      title: 'Фамилия',
+      dataIndex: 'surname',
     },
     {
       title: 'Имя',
-      children: [
-        {
-          dataIndex: 'surname',
-          width: '0',
-        },
-        {
-          width: '0',
-          dataIndex: 'name',
-        },
-        {
-          width: '0',
-          dataIndex: 'patronymic',
-        },
-      ],
-      key: 'name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Отчество',
+      dataIndex: 'patronymic',
     },
     {
       title: 'ПИН',
@@ -44,38 +31,16 @@ export const UserTablePage: FC<{ data: any }> = ({ data }) => {
       title: 'Дата рождения',
       key: 'birthDate',
       dataIndex: 'birth_date',
-    },
-    {
-      title: 'Активен',
-      key: 'active',
-      render: () => (
-        <Space size="middle">
-          <input type="checkbox" name="active" id="active" />
-        </Space>
-      ),
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      render: () => (
-        <Space size="middle">
-          <button className="p-[3px] rounded text-white">Редактировать</button>
-          <button className="p-[3px] rounded text-white">Удалить</button>
-        </Space>
-      ),
+      render: (_: any, record: any) => {
+        const date = new Date(record.birth_date).toLocaleDateString();
+
+        return <p>{date}</p>;
+      },
     },
   ];
 
-  const handleVis = () => {
-    setVis(!vis);
-  };
-
   return (
     <>
-      <div className={vis ? 'absolute z-50' : 'hidden'}>
-        <AddModalBusinessTrip set={handleVis} />
-      </div>
-      <Filter handleVis={handleVis} page="emp" role="admin" />
       <Table columns={columns} dataSource={data} bordered />
     </>
   );

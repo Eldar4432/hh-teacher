@@ -3,9 +3,10 @@ import { FC, lazy, useEffect } from 'react';
 
 import { Helmet } from 'react-helmet-async';
 
+import { getSchedule } from '~entities/schedule';
+import { dataAtom } from '~entities/schedule';
+
 import { useUser } from '~entities/user';
-import { getSchedule } from '~pages/schedule/api';
-import { dataAtom } from '~pages/schedule/lib';
 import { i18n } from '~shared/lib/i18n';
 
 export interface SchedulePageProps {}

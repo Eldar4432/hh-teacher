@@ -4,10 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { useAtom } from 'jotai';
 
 import { i18n } from '~shared/lib/i18n';
-
 import { useUser } from '~entities/user';
-import { getBusiness } from '~pages/businessTrips/api';
-import { dataAtom } from '~pages/businessTrips/lib';
+import { dataAtom, getTrips } from '~entities/businessTrip';
 
 const AdminTablePage = lazy(() =>
   import('./admin').then((module) => ({ default: module.AdminTablePage }))
@@ -25,8 +23,12 @@ export const TablePage: FC<TablePageProps> = () => {
 
   const [data, setData] = useAtom(dataAtom);
 
+  const handleTrips = () => {
+    setData(getTrips());
+  };
+
   useEffect(() => {
-    setData(getBusiness());
+    handleTrips();
   }, []);
 
   return (
@@ -34,7 +36,11 @@ export const TablePage: FC<TablePageProps> = () => {
       <Helmet>
         <title>{t('cm:pages.businessTrips')}</title>
       </Helmet>
-      {user?.type === 1 ? <AdminTablePage data={data} /> : <EmployerTablePage data={data} />}
+      {user?.type === 1 ? (
+        <AdminTablePage data={data} trips={handleTrips} />
+      ) : (
+        <EmployerTablePage data={data} />
+      )}
     </>
   );
 };

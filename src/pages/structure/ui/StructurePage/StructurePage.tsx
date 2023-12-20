@@ -3,9 +3,9 @@ import { lazy, useEffect } from 'react';
 
 import { Helmet } from 'react-helmet-async';
 
+import { dataAtom, getDepartment } from '~entities/department';
+
 import { useUser } from '~entities/user';
-import { getStructure } from '~pages/structure/api';
-import { dataAtom } from '~pages/structure/lib';
 import { i18n } from '~shared/lib/i18n';
 
 const AdminTablePage = lazy(() =>
@@ -22,8 +22,12 @@ export const StructurePage = () => {
 
   const [data, setData] = useAtom(dataAtom);
 
+  const handleDepartment = () => {
+    setData(getDepartment());
+  };
+
   useEffect(() => {
-    setData(getStructure());
+    handleDepartment();
   }, []);
 
   return (
@@ -31,7 +35,11 @@ export const StructurePage = () => {
       <Helmet>
         <title>{t('cm:pages.structure')}</title>
       </Helmet>
-      {user?.type === 1 ? <AdminTablePage data={data} /> : <UserTablePage data={data} />}
+      {user?.type === 1 ? (
+        <AdminTablePage data={data} handleDepartment={handleDepartment} />
+      ) : (
+        <UserTablePage data={data} />
+      )}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
 
-export const locAtom = atom('in');
+export const locAtom = atom('2');
 
 export const formAtom = atom({
   startDate: '',
