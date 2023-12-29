@@ -1,11 +1,8 @@
 import { useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
-
-// import { LocalStorageCache } from '~shared/lib/cache';
 import { i18n } from '~shared/lib/i18n';
 import { Navigate, RoutesUrls, useNavigate } from '~shared/lib/router';
 import { SignInForm, SignInFormProps } from '~features/auth';
-import { SetLocaleSimpleView } from '~features/locale';
 
 import { useSetUser, useUser } from '~entities/user';
 
@@ -39,7 +36,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
       <Helmet>
         <title>{t('cm:pages.login')}</title>
       </Helmet>
-      <SignInForm onSignIn={handleSignIn} langSlot={<SetLocaleSimpleView />} />
+      <SignInForm onSignIn={handleSignIn} />
     </LoginLayout>
   );
 };

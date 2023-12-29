@@ -14,11 +14,14 @@
   --gr: linear-gradient(205.17deg, #2b8b3b 10.93%, #00ff11 116.08%);
   --grv: linear-gradient(225deg, #bb65ff 0%, #4c6fff 100%);
   --box-shadow: 0px 0px 20px rgba(40, 105, 254, 0.07);
+
+  --font-montserrat: 'Montserrat', sans-serif; /* Добавлено правило для Montserrat */
 }
 
 body {
-  background: var(--bg);
+  // background: var(--bg);
   margin: 0;
+  font-family: var(--font-montserrat); /* Добавлено правило для Montserrat */
 }
 
 * {

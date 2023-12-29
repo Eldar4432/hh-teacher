@@ -1,3 +1,3 @@
-import { ModalProps as AntModalProps } from 'antd/es/modal/Modal';
+import { ModalProps as AntModalProps } from 'antd';
 
 export interface ModalProps extends AntModalProps {}

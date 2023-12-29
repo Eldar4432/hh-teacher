@@ -1,0 +1,116 @@
+.footer {
+  background-color: #e3e4e5;
+  border-top: 1px solid #e9ecef;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.containerFlax{
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+
+}
+
+.brandIconContainer {
+  margin-right: 2rem;
+
+  svg {
+    width: 50px;
+    fill: #ff4081;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-top: 0.5rem;
+  }
+}
+
+.contactInfo,
+.socialMedia {
+  margin: 1rem 0;
+
+  h1 {
+    font-size: 1.2rem;
+    color: #ff4081;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #495057;
+    margin: 0.5rem 0;
+  }
+}
+
+.socialMedia .ant-btn {
+  color: #495057;
+  border-color: #ff4081;
+
+  &:hover {
+    color: #007bff;
+    border-color: #007bff;
+  }
+}
+
+.footerText {
+  font-size: 1rem;
+  color: #495057;
+  font-weight: 300;
+  margin-top: 1.75rem;
+}
+
+
+.madeByText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #495057;
+  margin-top: 0.75rem;
+
+  p {
+    margin-right: 0.5rem;
+  }
+
+  .madeByLink {
+    font-size: 1rem;
+    color: #820ad1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}
+
+
+
+.madeByText {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #495057;
+  margin-top: 1rem;
+
+  .madeByLink {
+    font-size: 1rem;
+    color: #820ad1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}

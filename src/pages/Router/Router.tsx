@@ -10,7 +10,10 @@ import { LogoutPage } from '~pages/logout';
 import { SettingsPage } from '~pages/settings';
 import { TablePage } from '~pages/businessTrips';
 import { SchedulePage } from '~pages/schedule';
+import ResumePage from '../../processes/ResumePage/ResumePage';
 import { EmployersPage } from '~pages/employers';
+// import { Main } from '~pages/main';
+
 import { StructurePage } from '~pages/structure';
 import { ReportsPage } from '~pages/reports';
 import { useSetUser, useUser } from '~entities/user';
@@ -59,9 +62,18 @@ export const Router = () => {
     }
   }, []);
 
+  const handleNext = () => {
+    // Логика обработки события
+    console.log('Handle next clicked!');
+  };
+
+
   return (
     <Routes location={location} key={RoutesUrls.login}>
+      <Route path={RoutesUrls.root} element={<EmployersPage />} />
       <Route path={RoutesUrls.login} element={<LoginPage />} />
+      <Route path={RoutesUrls.resume} element={<ResumePage onClose={() => {}} />} />
+      {/* <Route path={RoutesUrls.registration} element={<LoginPage />} /> */}
 
       <Route path={RoutesUrls.root} element={createProtectedElement(<BaseLayout />)}>
         <Route path={RoutesUrls.settings} element={<SettingsPage />} />
@@ -74,7 +86,7 @@ export const Router = () => {
         <Route path={RoutesUrls.employers} element={<EmployersPage />} />
       </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );
 };

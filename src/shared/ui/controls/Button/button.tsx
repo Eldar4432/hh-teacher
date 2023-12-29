@@ -16,7 +16,7 @@ export interface ButtonProps {
   shape?: 'default' | 'circle' | 'round';
   size?: 'middle' | 'small' | 'large';
   target?: string;
-  type?: 'primary' | 'ghost' | 'dashed' | 'link' | 'text' | 'default';
+  type?: 'default' | 'primary' | 'dashed' | 'link' | 'text' | undefined;
   onClick?: ReactEventHandler;
   color?: 'inherit';
 

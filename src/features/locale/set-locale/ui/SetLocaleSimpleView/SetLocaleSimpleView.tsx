@@ -1,77 +1,41 @@
+import React from 'react';
+import Select from 'react-select';
 import { i18n, useTranslation } from '~shared/lib/i18n';
-import { Box, Segmented } from '~shared/ui';
-
+import { Box } from '~shared/ui';
 import { LocaleCodes } from '../../model';
-
 import styles from './style.module.scss';
 
 export interface SetLocaleSimpleViewProps {}
 
-export const SetLocaleSimpleView: React.FC<SetLocaleSimpleViewProps> = () => {
+const languageOptions = [
+  { label: 'Кырг', value: LocaleCodes.KYRGYZ },
+  { label: 'Рус', value: LocaleCodes.RUSSIAN },
+  { label: 'Eng', value: LocaleCodes.ENGLISH },
+];
+
+const SetLocaleSimpleView: React.FC<SetLocaleSimpleViewProps> = () => {
   const { t } = useTranslation();
 
-  const handleLocaleChange = (payload: string | number) => {
-    i18n.changeLanguage(payload as string);
+  const handleLocaleChange = (selectedOption: any) => {
+    i18n.changeLanguage(selectedOption.value);
   };
 
   return (
-    <div className={styles.lang}>
-      <div
-        style={
-          i18n.language === LocaleCodes.KYRGYZ
-            ? { fontWeight: 'bold', color: 'var(--primary)' }
-            : { color: 'var(--gray)' }
-        }
-        onClick={handleLocaleChange.bind(null, LocaleCodes.KYRGYZ)}
-      >
-        Кырг
-      </div>
-      <div
-        style={
-          i18n.language === LocaleCodes.RUSSIAN
-            ? { fontWeight: 'bold', color: 'var(--primary)' }
-            : { color: 'var(--gray)' }
-        }
-        onClick={handleLocaleChange.bind(null, LocaleCodes.RUSSIAN)}
-      >
-        Рус
-      </div>
-      <div
-        style={
-          i18n.language === LocaleCodes.ENGLISH
-            ? { fontWeight: 'bold', color: 'var(--primary)' }
-            : { color: 'var(--gray)' }
-        }
-        onClick={handleLocaleChange.bind(null, LocaleCodes.ENGLISH)}
-      >
-        Eng
-      </div>
-    </div>
-  );
-
-  return (
-    <Box title={t('locale.language')}>
-      <div className="flex">
-        <Segmented
+    <Box>
+      <div className={styles.lang}>
+        <Select
+          options={languageOptions}
+          value={languageOptions.find((option) => option.value === i18n.language)}
           onChange={handleLocaleChange}
-          size="large"
-          defaultValue={i18n.language}
-          options={[
-            {
-              label: <div className="px-3">{t('locale.russian')}</div>,
-              value: LocaleCodes.RUSSIAN,
-            },
-            {
-              label: <div className="px-3">{t('locale.kyrgyz')}</div>,
-              value: LocaleCodes.KYRGYZ,
-            },
-            {
-              label: <div className="px-3">{t('locale.english')}</div>,
-              value: LocaleCodes.ENGLISH,
-            },
-          ]}
+          isSearchable={false}
+          className={styles.languageSelect}
         />
       </div>
     </Box>
   );
 };
+
+export default SetLocaleSimpleView;
+
+
+ 

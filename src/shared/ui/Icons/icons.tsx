@@ -27,6 +27,67 @@ export const PassInVisibleIcon = () => (
   </svg>
 );
 
+
+
+export const MonKrLogo = () => (
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+
+<img
+      src="https://scontent.ffru7-1.fna.fbcdn.net/v/t1.6435-9/148856530_4993068670767989_224247900253377700_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=8zfAd73nkB0AX-7_sA-&_nc_ht=scontent.ffru7-1.fna&oh=00_AfDLkpqF-00scms7YHcE_2rKKZgKxUg9bcC7zjNd_0ewgg&oe=65B32655"  // Замените это на фактический URL вашего изображения
+      alt="Логотип MonKr"
+      style={{ width: '40px', height: '40px', marginLeft: '15px'}}
+    />
+    {/* <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#filter0_d_141_1319)">
+        <path
+          d="M25.3125 10.4375H4.6875M25.3125 17H4.6875M15 23.5625H4.6875"
+          stroke="#727D97"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_141_1319"
+          x="-4"
+          y="0"
+          width="38"
+          height="38"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="2" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.129412 0 0 0 0 0.141176 0 0 0 0 0.160784 0 0 0 0.05 0"
+          />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_141_1319" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_141_1319"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg> */}
+    <span style={{ marginLeft: '8px', fontSize: '20px', fontWeight: '500', }}>МОН КР</span>
+  </div>
+);
+
+
+
+
+
 export const BurgerIcon = () => (
   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_141_1319)">

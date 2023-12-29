@@ -1,4 +1,4 @@
-import { BurgerIcon } from '~shared/ui/Icons/icons';
+import { BurgerIcon, MonKrLogo } from '~shared/ui/Icons/icons';
 
 import { useCollapsed, useSetCollapsed } from '../model';
 
@@ -15,7 +15,7 @@ export const Burger = () => {
 
   return (
     <div onClick={handleCollapse} className={styles.Burger}>
-      <BurgerIcon />
+      <MonKrLogo />
     </div>
   );
 };

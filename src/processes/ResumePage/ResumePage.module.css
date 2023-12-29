@@ -1,0 +1,310 @@
+.ModalContent {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  /* text-align: end; */
+  padding: 70px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  left: auto;
+  right: auto;
+  display: flex;
+}
+
+.ResumePageContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.ModalContent h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 30px 0 30px 0;
+  color: #333;
+}
+.ModalForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+  width: 90%;
+  float: right;
+  right: 10;
+  left: 10;
+  float: right;
+  margin: 0 12%;
+}
+
+label {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  width: 100%;
+  padding: 7px 7px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.NameRow {
+  gap: 20px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.ModalForm label input[name="firstName"],
+.ModalForm label input[name="lastName"],
+.ModalForm label input[name="middleName"] {
+  width: 100%;
+  max-width: 500px;
+}
+
+@media (max-width: 600px) {
+  .Modal {
+    width: 100%;
+    height: 100%;
+  }
+
+  .NameRow {
+    flex-direction: column;
+  }
+}
+
+.ProfileImage {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 80px;
+  float: right;
+}
+
+.ModalFormFlex {
+  display: flex;
+  width: 1100px;
+}
+
+.LanguageButtons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.Button:hover {
+  background-color: #21a425;
+  color: #fff;
+}
+
+.SelectedButton {
+  border: 5px solid #000000;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ContactInfo {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ContactInfo label {
+  width: 530px;
+}
+
+.FormLabelContainer,
+.FormRow,
+.FormBirthd {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.FormLabelContainer label,
+.FormRow label,
+.FormBirthd label {
+  width: 100%;
+  justify-content: space-between;
+}
+.ButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ButtonContainer button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.ButtonContainer button:first-child {
+  background-color: #ccc;
+  color: #000;
+}
+
+.ButtonContainer button:hover {
+  background-color: #45a049;
+}
+
+.ButtonContainer button[type="submit"] {
+  margin-left: auto;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.NextButton {
+  position: absolute;
+  right: 0;
+  color: #fff;
+}
+
+.textP {
+  font-weight: 700;
+}
+
+.MiddleContainer {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.MiddleContainer label {
+  width: 82%;
+}
+
+.MiddleContainer .checkboxLabel {
+  width: 20%;
+}
+
+.checkboxLabel {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.ButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ButtonContainer button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Стили для кнопок навигации */
+.ButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ButtonContainer button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+/* Hover-эффект для кнопок */
+.ButtonContainer button:hover {
+  background-color: #45a049;
+}
+
+/* Стили для кнопок "Далее" и "Завершить" */
+.NextButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+/* Hover-эффект для кнопок "Далее" и "Завершить" */
+.NextButton:hover {
+  background-color: #45a049;
+}
+
+/* Стили для кнопок "Назад" и "Далее" в середине */
+.BackButton,
+.NextButton.middle {
+  background-color: #ccc;
+  color: #000;
+  padding: 10px 15px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+/* Hover-эффект для кнопок "Назад" и "Далее" в середине */
+.BackButton:hover,
+.NextButton.middle:hover {
+  background-color: #45a049;
+}
+
+/* Стили для кнопки "Завершить" */
+.ButtonContainer button[type="submit"] {
+  margin-left: auto;
+  background-color: #4caf50;
+}
+
+/* Hover-эффект для кнопки "Завершить" */
+.ButtonContainer button[type="submit"]:hover {
+  background-color: #45a049;
+}

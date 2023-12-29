@@ -1,0 +1,75 @@
+.StepIndicatorContainer {
+    /* display: flex; */
+    justify-content: space-around;
+    /* padding-top: 20px; */
+  }
+  
+  .StepIndicator {
+    width: 20px;
+    margin: 20px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .StepIndicator.completed {
+    background-color: #3c9f3f;
+    color: white;
+  }
+  
+
+  .StepIndicatorContainer {
+  display: flex;
+  flex-direction: column; /* Изменение направления flex на вертикальное */
+}
+
+.StepIndicator {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px; /* Пространство между индикаторами */
+}
+
+.StepIndicatorContainer .StepIndicator {
+  margin-bottom: 0; /* Убираем пространство снизу для последнего индикатора */
+}
+
+.StepIndicatorContainer .StepIndicator:hover {
+  cursor: pointer;
+}
+
+
+.StepIndicator {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: gray;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.StepIndicatorContainer {
+  /* display: flex; */
+}
+
+.StepIndicatorContainer .StepIndicator {
+  margin-right: 0; /* Убираем правый отступ для последнего индикатора */
+}
+
+.StepIndicatorContainer .StepIndicator:hover {
+  cursor: pointer;
+}
