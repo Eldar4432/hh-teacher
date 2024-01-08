@@ -17,36 +17,40 @@ const { Option } = Select;
 const PersonalInformation: React.FC<PersonalInformationProps> = ({ handleNext }) => {
   const [pin, setPin] = useState<string>('');
   const [educationOptions, setEducationOptions] = useState<{ value: string; label: string }[]>([]);
+  const [formData, setFormData] = useState({
+    profileImage: null as string | null,
+  });
 
   useEffect(() => {
     const apiUrl = 'http://localhost:5000/hh/api/education';
 
-    axios.get(apiUrl).then(resp => {
-      const educationsFromServer = resp.data.data.educations;
-      const formattedEducations = educationsFromServer.map(
-        (edu: { id_education: number; education: string }) => ({
-          value: edu.id_education.toString(),
-          label: edu.education,
-        })
-      );
+    axios.get(apiUrl)
+      .then(resp => {
+        const educationsFromServer = resp.data.data.educations;
+        const formattedEducations = educationsFromServer.map(
+          (edu: { id_education: number; education: string }) => ({
+            value: edu.id_education.toString(),
+            label: edu.education,
+          })
+        );
 
-      setEducationOptions(formattedEducations);
-    });
+        setEducationOptions(formattedEducations);
+      })
+      .catch(error => {
+        console.error('Error fetching education options:', error);
+        // Добавьте обработку ошибок, например, отображение сообщения пользователю
+        message.error('Ошибка при загрузке данных');
+      });
   }, [setEducationOptions]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value;
-
     inputValue = inputValue.replace(/\D/g, '').slice(0, 14);
 
     if (/^[1-2]?$/.test(inputValue[0])) {
       setPin(inputValue);
     }
   };
-
-  const [formData, setFormData] = useState({
-    profileImage: null as string | null,
-  });
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -145,6 +149,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({ handleNext })
           placeholder='например: кыргызский язык'
         />
       </label>
+      
       <div className={styles.FormLabelContainer}>
         <label className={styles.FormLabel}>
           <p className={styles.textP}>Занятость</p>

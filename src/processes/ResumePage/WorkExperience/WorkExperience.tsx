@@ -1,12 +1,16 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import styles from './experience.module.css';
+import { DatePicker, Input, Checkbox, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import styles from './experience.module.css';
+import moment from 'moment';
+import dayjs from 'dayjs';
+
+const { TextArea } = Input;
 
 interface WorkExperienceProps {
-  // onClose: () => void;
   handleNext: () => void;
-  onClose?: () => void; 
+  onClose?: () => void;
 }
 
 interface Experience {
@@ -34,10 +38,14 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ handleNext, onClose }) 
     },
   ]);
 
-  const handleChange = (index: number, field: keyof Experience, value: string | boolean) => {
+  const handleChange = <K extends keyof Experience>(
+    index: number,
+    field: K,
+    value: Experience[K]
+  ) => {
     setExperiences(prevExperiences => {
       const updatedExperiences = [...prevExperiences];
-      // updatedExperiences[index][field] = value;
+      updatedExperiences[index][field] = value;
       return updatedExperiences;
     });
   };
@@ -66,17 +74,9 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ handleNext, onClose }) 
     });
   };
 
-  // const handleSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   console.log(experiences);
-  //   onClose();
-  // };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(experiences);
-    
-    // Проверяем, существует ли onClose, прежде чем вызывать
     onClose && onClose();
   };
   return (
@@ -85,16 +85,85 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ handleNext, onClose }) 
       <form className={styles.ModalForm} onSubmit={handleSubmit}>
         {experiences.map((experience, index) => (
           <div key={index} className={styles.ExperienceContainer}>
+            <div className={styles.FirstContainer}>
+              <label>
+                <p className={styles.textP}>Устроился</p>
+                <DatePicker
+                  className={styles.inputs}
+                  value={experience.hiredDate ? dayjs(experience.hiredDate) : null}
+                  onChange={(date, dateString) => handleChange(index, 'hiredDate', dateString)}
+                />
+              </label>
+
+              <label>
+                <p className={styles.textP}>Уволился</p>
+                <DatePicker
+                  className={styles.inputs}
+                  value={experience.resignedDate ? dayjs(experience.resignedDate) : null}
+                  onChange={(date, dateString) => handleChange(index, 'resignedDate', dateString)}
+                />
+              </label>
+
+              <label className={styles.checkboxLabel}>
+                <p className={styles.textP}>По настоящее время</p>
+                <Checkbox
+                  className={styles.checkboxInput}
+                  checked={experience.currentPosition}
+                  onChange={() =>
+                    handleChange(index, 'currentPosition', !experience.currentPosition)
+                  }
+                />
+              </label>
+            </div>
+
+            <div className={styles.MiddleContainer}>
+              <label>
+                <p className={styles.textP}>Должность</p>
+                <Input
+                  className={styles.inputs}
+                  placeholder='пример: учитель физики'
+                  value={experience.position}
+                  onChange={e => handleChange(index, 'position', e.target.value)}
+                />
+              </label>
+
+              <label className={styles.checkboxLabel}>
+                <p className={styles.textP}>Полная занятость</p>
+                <Checkbox
+                  className={styles.checkboxInput}
+                  checked={experience.fullTime}
+                  onChange={() => handleChange(index, 'fullTime', !experience.fullTime)}
+                />
+              </label>
+            </div>
+
+            <label>
+              <p className={styles.textP}>Школа</p>
+              <Input
+                className={styles.inputs}
+                placeholder='Например: Средняя общеобразовательная школа имени Жаналы уулу Абдыракман'
+                value={experience.organization}
+                onChange={e => handleChange(index, 'organization', e.target.value)}
+              />
+            </label>
+
+            <Button
+              className={styles.deleteButton}
+              htmlType='button'
+              onClick={() => handleRemoveExperience(index)}
+            >
+              <FontAwesomeIcon icon={faTrash} /> Удалить
+            </Button>
           </div>
         ))}
 
-        <button className={styles.addButton} type='button' onClick={handleAddExperience}>
+        <Button className={styles.addButton} htmlType='button' onClick={handleAddExperience}>
           <FontAwesomeIcon icon={faPlus} />
-        </button>
+        </Button>
 
-        <button className={styles.submitButton} type='submit'>
-          Submit
-        </button>
+        <Button className={styles.submitButton} htmlType='submit'>
+          Сохранить
+        </Button>
       </form>
     </div>
   );

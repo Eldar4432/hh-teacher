@@ -1,22 +1,25 @@
 .ModalContent {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   height: auto;
   /* text-align: end; */
   padding: 70px;
   box-sizing: border-box;
-  background-color: #fff;
+  /* background-color: #4f4444; */
   border-radius: 10px;
-  left: auto;
+  margin-left: 100px;
   right: auto;
   display: flex;
+text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ResumePageContainer {
   display: flex;
   justify-content: space-between;
 }
-
 
 .ModalContent h1 {
   font-size: 1.5rem;
@@ -59,11 +62,11 @@ label {
   box-sizing: border-box;
 }
 
-.ModalForm label input[name="firstName"],
-.ModalForm label input[name="lastName"],
-.ModalForm label input[name="middleName"] {
+.ModalForm label input[name='firstName'],
+.ModalForm label input[name='lastName'],
+.ModalForm label input[name='middleName'] {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
 }
 
 @media (max-width: 600px) {
@@ -88,7 +91,7 @@ label {
 
 .ModalFormFlex {
   display: flex;
-  width: 1100px;
+  /* width: 1100px; */
 }
 
 .LanguageButtons {
@@ -177,7 +180,7 @@ label {
   background-color: #45a049;
 }
 
-.ButtonContainer button[type="submit"] {
+.ButtonContainer button[type='submit'] {
   margin-left: auto;
 }
 
@@ -299,12 +302,12 @@ label {
 }
 
 /* Стили для кнопки "Завершить" */
-.ButtonContainer button[type="submit"] {
+.ButtonContainer button[type='submit'] {
   margin-left: auto;
   background-color: #4caf50;
 }
 
 /* Hover-эффект для кнопки "Завершить" */
-.ButtonContainer button[type="submit"]:hover {
+.ButtonContainer button[type='submit']:hover {
   background-color: #45a049;
 }
